@@ -1,5 +1,17 @@
-.taskRow{
-
+.taskRow {
   display: flex;
   align-items: center;
+  padding: 10px 0 10px 10px;
+
+  &__task {
+    min-width: 200px;
+  }
+
+  &__priority {
+    min-width: 50px;
+  }
+
+  &__form {
+    min-width: 50px;
+  }
 }
