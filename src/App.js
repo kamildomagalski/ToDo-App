@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import RowContainer from "./components/RowContainer";
 import TaskRow from "./components/TaskRow";
 import HeaderRow from "./components/HeaderRow";
+import AddTaskRow from "./components/AddTaskRow";
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
     <section className={'app'}>
       <div className={'container'}>
         <RowContainer>
-        
+        <AddTaskRow/>
         </RowContainer>
         <RowContainer>
           <HeaderRow/>
@@ -57,7 +58,6 @@ function App() {
               <TaskRow key={i} task={task}/>
             )
           })}
-          
         </RowContainer>
       </div>
     </section>
