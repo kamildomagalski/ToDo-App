@@ -12,6 +12,7 @@ function App() {
     priority: '',
     done: false
   })
+
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))

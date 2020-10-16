@@ -8,14 +8,14 @@ function AddTaskRow({addTask, newTask, setTask}) {
                name={'description'}
                onChange={setTask}
                type={'text'}
-               placeholder={'Write task description'}/>
+               placeholder={'Enter task description'}/>
         <div className={'wrapper'}>
           <p>Priority</p>
-          <select>
-            <option>select</option>
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
+          <select value={newTask.priority} name={'priority'} onChange={setTask}>
+            <option value={'select'}>select</option>
+            <option value={'Low'}>Low</option>
+            <option value={'Medium'}>Medium</option>
+            <option value={'High'}>High</option>
           </select>
           <button type={"submit"} >Add task</button>
         </div>
