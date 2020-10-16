@@ -1,0 +1,10 @@
+.headerRow {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: darkgray;
+
+  &__title {
+    color: white;
+  }
+}

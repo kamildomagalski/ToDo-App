@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import RowContainer from "./components/RowContainer";
 import TaskRow from "./components/TaskRow";
+import HeaderRow from "./components/HeaderRow";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         
         </RowContainer>
         <RowContainer>
+          <HeaderRow/>
           {tasks.map((task, i)=>{
             return(
               <TaskRow key={i} task={task}/>
