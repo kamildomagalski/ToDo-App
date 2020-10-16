@@ -1,10 +1,14 @@
 import React from 'react';
 
-function AddTaskRow() {
+function AddTaskRow({addTask, newTask, setTask}) {
   return (
     <div className={'addTaskRow'}>
-      <form className={'addTaskRow__form'}>
-        <input type={'text'} placeholder={'Write task description'}/>
+      <form className={'addTaskRow__form'} onSubmit={addTask}>
+        <input value={newTask.description}
+               name={'description'}
+               onChange={setTask}
+               type={'text'}
+               placeholder={'Write task description'}/>
         <div className={'wrapper'}>
           <p>Priority</p>
           <select>
@@ -13,7 +17,7 @@ function AddTaskRow() {
             <option>Medium</option>
             <option>High</option>
           </select>
-          <button type={"submit"}>Add task</button>
+          <button type={"submit"} >Add task</button>
         </div>
       </form>
     </div>
