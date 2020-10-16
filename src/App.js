@@ -4,10 +4,13 @@ import TaskRow from "./components/TaskRow";
 import HeaderRow from "./components/HeaderRow";
 import AddTaskRow from "./components/AddTaskRow";
 
+import { v4 as uuidv4 } from 'uuid'
+
 
 function App() {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
   const [newTask, setNewTask] = useState({
+    id: '',
     description: '',
     priority: '',
     done: false
@@ -20,17 +23,30 @@ function App() {
   
   const setTask = (e) => {
     const {name, value} = e.target;
+    let id= uuidv4();
     setNewTask(prevState => ({
       ...prevState,
+      id,
       [name]: value
+      
     }))
   }
   const addTask= (e) => {
     e.preventDefault();
     setTasks(prevState => ([
       ...prevState,
-      newTask
+      newTask,
     ]))
+  }
+  
+  const setDone= (e, id) => {
+    const value = e.target.checked
+    const name= e.target
+    
+    setTasks(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
   }
   
   return (
@@ -38,31 +54,12 @@ function App() {
       <div className={'container'}>
         <RowContainer>
           <AddTaskRow newTask={newTask} setTask={setTask} addTask={addTask}/>
-          {/*<div className={'addTaskRow'}>*/}
-          {/*  <form className={'addTaskRow__form'} onSubmit={addTask}>*/}
-          {/*    <input value={newTask.description}*/}
-          {/*           name={'description'}*/}
-          {/*           onChange={setTask}*/}
-          {/*           type={'text'}*/}
-          {/*           placeholder={'Write task description'}/>*/}
-          {/*    <div className={'wrapper'}>*/}
-          {/*      <p>Priority</p>*/}
-          {/*      <select>*/}
-          {/*        <option>select</option>*/}
-          {/*        <option>Low</option>*/}
-          {/*        <option>Medium</option>*/}
-          {/*        <option>High</option>*/}
-          {/*      </select>*/}
-          {/*      <button type={"submit"} >Add task</button>*/}
-          {/*    </div>*/}
-          {/*  </form>*/}
-          {/*</div>*/}
         </RowContainer>
         <RowContainer>
           <HeaderRow/>
           {tasks.map((task, i) => {
             return (
-              <TaskRow key={i} task={task}/>
+              <TaskRow key={i} task={task} setDone={setDone}/>
             )
           })}
         </RowContainer>
