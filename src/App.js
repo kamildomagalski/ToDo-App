@@ -4,7 +4,7 @@ import TaskRow from "./components/TaskRow";
 import HeaderRow from "./components/HeaderRow";
 import AddTaskRow from "./components/AddTaskRow";
 
-import { v4 as uuidv4 } from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     priority: '',
     done: false
   })
-
+  
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -23,29 +23,31 @@ function App() {
   
   const setTask = (e) => {
     const {name, value} = e.target;
-    let id= uuidv4();
+    let id = uuidv4();
     setNewTask(prevState => ({
       ...prevState,
       id,
       [name]: value
-      
     }))
   }
-  const addTask= (e) => {
+  const addTask = (e) => {
     e.preventDefault();
     setTasks(prevState => ([
-      ...prevState,
-      newTask,
-    ]))
+        ...prevState,
+        newTask,
+      ])
+    )
   }
   
-  const setDone= (e, id) => {
-    const value = e.target.checked
-    const name= e.target
-    
-    setTasks(prevState => ({
-      ...prevState,
-      [name]: value
+  const setDone = (id) => {
+    setTasks(tasks.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          done: !item.done
+        }
+      }
+      return item
     }))
   }
   
@@ -57,9 +59,9 @@ function App() {
         </RowContainer>
         <RowContainer>
           <HeaderRow/>
-          {tasks.map((task, i) => {
+          {tasks.map((task) => {
             return (
-              <TaskRow key={i} task={task} setDone={setDone}/>
+              <TaskRow key={task.id} task={task} setDone={setDone}/>
             )
           })}
         </RowContainer>
