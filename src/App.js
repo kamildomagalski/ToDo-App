@@ -5,6 +5,7 @@ import HeaderRow from "./components/HeaderRow";
 import AddTaskRow from "./components/AddTaskRow";
 
 import {v4 as uuidv4} from 'uuid'
+import PaginateRow from "./components/PaginateRow";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     priority: '',
     done: false
   })
-  console.log(tasks);
+  
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -37,6 +38,7 @@ function App() {
         newTask,
       ])
     )
+    clearNewTask();
   }
   
   const setDone = (id) => {
@@ -55,6 +57,15 @@ function App() {
     setTasks(tasks.filter(item => item.id !== id))
   }
   
+  function clearNewTask(){
+    setNewTask({
+      id: '',
+      description: '',
+      priority: '',
+      done: false
+    })
+  }
+  
   return (
     <section className={'app'}>
       <div className={'container'}>
@@ -68,6 +79,7 @@ function App() {
               <TaskRow key={task.id} task={task} setDone={setDone} setDelete={setDelete}/>
             )
           })}
+          <PaginateRow/>
         </RowContainer>
       </div>
     </section>
