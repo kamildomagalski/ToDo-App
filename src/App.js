@@ -13,8 +13,12 @@ function App() {
   const [newTask, setNewTask] = useState({
     id: '',
     description: '',
-    priority: '',
+    priority: 'none',
     done: false
+  })
+  const [errors, setErrors] = useState({
+    description: '',
+    priority: ''
   })
   //pagination states
   const [tasksPerPage, setTasksPerPage] = useState(JSON.parse(localStorage.getItem('rowsPerPage')) || 5)
@@ -28,9 +32,9 @@ function App() {
   
   //set page to first after changing taskPerPage
   // if(currentPage > numberOfPages) setCurrentPage(1)
-  useEffect(()=>{
+  useEffect(() => {
     setCurrentPage(1)
-  },[tasksPerPage])
+  }, [tasksPerPage])
   
   
   useEffect(() => {
@@ -47,14 +51,17 @@ function App() {
       [name]: value
     }))
   }
+  
   const addTask = (e) => {
     e.preventDefault();
+    if (!validate()) return
     setTasks(prevState => ([
         ...prevState,
         newTask,
       ])
     )
     clearNewTask();
+    clearErrors()
   }
   const changeRows = (e) => {
     const {value} = e.target
@@ -79,7 +86,30 @@ function App() {
     setCurrentPage(number)
   }
   
-  
+  function validate() {
+    let isValid = true
+    if (newTask.description.length < 5) {
+      setErrors(prevState => ({
+        ...prevState,
+          description: 'Description must contain at least 5 characters.'
+      }))
+      isValid = false
+    }
+    if (newTask.priority === 'none') {
+      setErrors(prevState => ({
+        ...prevState,
+        priority: 'You have to set priority.'
+      }))
+      isValid = false
+    }
+    return isValid
+  }
+function clearErrors(){
+    setErrors({
+      description: '',
+      priority: ''
+    })
+}
   function clearNewTask() {
     setNewTask({
       id: '',
@@ -93,7 +123,10 @@ function App() {
     <section className={'app'}>
       <div className={'container'}>
         <RowContainer>
-          <AddTaskRow newTask={newTask} setTask={setTask} addTask={addTask}/>
+          <AddTaskRow newTask={newTask} setTask={setTask} addTask={addTask} errors={errors}
+                      // validateDescriptionOff={validateDescriptionOff}
+                      // validatePriorityOff={validatePriorityOff}
+          />
         </RowContainer>
         <RowContainer>
           <HeaderRow/>

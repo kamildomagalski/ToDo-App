@@ -15,4 +15,11 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__error{
+    color: darkred;
+    font-size: 0.8rem;
+  }
+  .d-none{
+    display: none;
+  }
 }
