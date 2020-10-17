@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function TaskRow({task, setDone}) {
+function TaskRow({task, setDone, setDelete}) {
   
 
   return (
@@ -11,6 +11,7 @@ function TaskRow({task, setDone}) {
       <form className={'taskRow__form'}>
         <input name={'done'} type={'checkbox'} checked={task.done} onChange={()=>setDone(task.id)}/>
       </form>
+      <button onClick={()=>setDelete(task.id)}>d</button>
     </div>
   );
 }

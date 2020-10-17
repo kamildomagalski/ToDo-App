@@ -15,7 +15,7 @@ function App() {
     priority: '',
     done: false
   })
-  
+  console.log(tasks);
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -51,6 +51,10 @@ function App() {
     }))
   }
   
+  const setDelete = (id)=>{
+    setTasks(tasks.filter(item => item.id !== id))
+  }
+  
   return (
     <section className={'app'}>
       <div className={'container'}>
@@ -61,7 +65,7 @@ function App() {
           <HeaderRow/>
           {tasks.map((task) => {
             return (
-              <TaskRow key={task.id} task={task} setDone={setDone}/>
+              <TaskRow key={task.id} task={task} setDone={setDone} setDelete={setDelete}/>
             )
           })}
         </RowContainer>
