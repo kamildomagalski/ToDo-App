@@ -16,11 +16,20 @@ function App() {
     priority: '',
     done: false
   })
+  //pagination states
+  const [tasksPerPage, setTasksPerPage] = useState(JSON.parse(localStorage.getItem('rowsPerPage')) || 5)
+  const [currentPage, setCurrentPage] = useState(1)
   
+  //Pagination
+  const indexOfLastTask = currentPage * tasksPerPage
+  const indexOfFirstTask = indexOfLastTask - tasksPerPage
+  const currentTasks = tasks.slice(indexOfFirstTask, indexOfLastTask)
+  const numberOfPages = Math.ceil(tasks.length / tasksPerPage)
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
+    localStorage.setItem('rowsPerPage', JSON.stringify(tasksPerPage))
+  }, [tasks, tasksPerPage])
   
   const setTask = (e) => {
     const {name, value} = e.target;
@@ -40,7 +49,10 @@ function App() {
     )
     clearNewTask();
   }
-  
+  const changeRows = (e) => {
+    const {value} = e.target
+    setTasksPerPage(value)
+  }
   const setDone = (id) => {
     setTasks(tasks.map(item => {
       if (item.id === id) {
@@ -53,11 +65,15 @@ function App() {
     }))
   }
   
-  const setDelete = (id)=>{
+  const setDelete = (id) => {
     setTasks(tasks.filter(item => item.id !== id))
   }
+  const setPage = (number) => {
+    setCurrentPage(number)
+  }
   
-  function clearNewTask(){
+  
+  function clearNewTask() {
     setNewTask({
       id: '',
       description: '',
@@ -74,12 +90,19 @@ function App() {
         </RowContainer>
         <RowContainer>
           <HeaderRow/>
-          {tasks.map((task) => {
+          {currentTasks.map((task) => {
             return (
               <TaskRow key={task.id} task={task} setDone={setDone} setDelete={setDelete}/>
             )
           })}
-          <PaginateRow/>
+          <PaginateRow tasksPerPage={tasksPerPage}
+                       changeRows={changeRows}
+                       numberOfPages={numberOfPages}
+                       numberOfTasks={tasks.length}
+                       indexOfFirstTask={indexOfFirstTask}
+                       indexOfLastTask={indexOfLastTask}
+                       currentPage={currentPage}
+                       setPage={setPage}/>
         </RowContainer>
       </div>
     </section>
@@ -87,41 +110,3 @@ function App() {
 }
 
 export default App;
-
-// [
-//   {
-//     name: 'take out trash',
-//     priority: 'medium',
-//     done: false
-//   },
-//   {
-//     name: 'wash dishes',
-//     priority: 'low',
-//     done: true
-//   },
-//   {
-//     name: 'go for a walk',
-//     priority: 'low',
-//     done: false
-//   },
-//   {
-//     name: 'make pizza',
-//     priority: 'high',
-//     done: false
-//   },
-//   {
-//     name: 'go sleep',
-//     priority: 'medium',
-//     done: true
-//   },
-//   {
-//     name: 'somethin else',
-//     priority: 'medium',
-//     done: false
-//   },
-//   {
-//     name: 'nevermind',
-//     priority: 'medium',
-//     done: true
-//   }
-// ]
