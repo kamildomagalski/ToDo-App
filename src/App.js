@@ -30,8 +30,9 @@ function App() {
   const currentTasks = tasks.slice(indexOfFirstTask, indexOfLastTask)
   const numberOfPages = Math.ceil(tasks.length / tasksPerPage)
   
+  //set page to last when deleting last task
+  if(currentPage > numberOfPages) setCurrentPage(numberOfPages)
   //set page to first after changing taskPerPage
-  // if(currentPage > numberOfPages) setCurrentPage(1)
   useEffect(() => {
     setCurrentPage(1)
   }, [tasksPerPage])

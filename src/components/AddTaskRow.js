@@ -8,7 +8,7 @@ function AddTaskRow({addTask, newTask, setTask, errors}) {
   function validatePriorityOff(){
     return (newTask.priority === 'none')
   }
-  console.log(validateDescriptionOff());
+
   return (
     <div className={'addTaskRow'}>
       <form className={'addTaskRow__form'} onSubmit={addTask}>
