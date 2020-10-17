@@ -3,6 +3,12 @@
   align-items: center;
   padding: 10px 0 10px 10px;
 
+  &:hover {
+    .taskRow__btn {
+      display: block;
+    }
+  }
+
   &__task {
     min-width: 200px;
   }
@@ -11,7 +17,20 @@
     min-width: 50px;
   }
 
-  &__form {
+  &__checkbox {
     min-width: 50px;
+  }
+
+  &__btnWrapper {
+    width: 20px;
+    height: 20px;
+
+  }
+
+
+  &__btn {
+    display: none;
+
+
   }
 }

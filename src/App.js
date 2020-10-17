@@ -26,6 +26,13 @@ function App() {
   const currentTasks = tasks.slice(indexOfFirstTask, indexOfLastTask)
   const numberOfPages = Math.ceil(tasks.length / tasksPerPage)
   
+  //set page to first after changing taskPerPage
+  // if(currentPage > numberOfPages) setCurrentPage(1)
+  useEffect(()=>{
+    setCurrentPage(1)
+  },[tasksPerPage])
+  
+  
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
     localStorage.setItem('rowsPerPage', JSON.stringify(tasksPerPage))
