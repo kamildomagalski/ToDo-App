@@ -1,10 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function RowContainer({children}) {
- return (
-  <div className={'rowContainer'}>
-   {children}
-  </div>
- );
+function RowContainer({ children }) {
+  return <div className={"rowContainer"}>{children}</div>;
 }
+
 export default RowContainer;
