@@ -1,28 +1,31 @@
 import React from "react";
 
 function HeaderRow({
-  sortAscendingByDescription,
-  sortDescendingByDescription,
   sorting,
-  sortAscendingByPriority,
-  sortDescendingByPriority,
   sortAscendingByDone,
   sortDescendingByDone,
-                     sortByDescription
+  sortByDescription,
+  sortByPriority,
 }) {
-  
-  const handleSortDescription= ()=>{
-    if(sorting.description === 'descending' || sorting.description === undefined){
-      sortByDescription('ascending')
-    }else{
-      sortByDescription('descending')
+  const handleSortDescription = () => {
+    if (
+      sorting.description === "descending" ||
+      sorting.description === undefined
+    ) {
+      sortByDescription("ascending");
+    } else {
+      sortByDescription("descending");
     }
-  }
-  
-  const handleSortPriority =
-    sorting.priority === "descending" || sorting.priority === undefined
-      ? sortAscendingByPriority
-      : sortDescendingByPriority;
+  };
+
+  const handleSortPriority = () => {
+    if (sorting.priority === "descending" || sorting.priority === undefined) {
+      sortByPriority("ascending");
+    } else {
+      sortByPriority("descending");
+    }
+  };
+
   const handleSortDone =
     sorting.done === "descending" || sorting.done === undefined
       ? sortAscendingByDone

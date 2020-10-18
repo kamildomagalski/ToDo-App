@@ -68,41 +68,37 @@ function App() {
     setCurrentPage(number);
   };
   function sortByDescription(order) {
-    if (order === 'ascending') {
-      setTasks(sortByProperty('ascending', tasks, 'description'))
+    if (order === "ascending") {
+      setTasks(sortByProperty("ascending", tasks, "description"));
     } else {
-      setTasks(sortByProperty('descending', tasks, 'description'))
+      setTasks(sortByProperty("descending", tasks, "description"));
     }
     setSorting({
-      description: order
-    })
-  }
-
-  function sortAscendingByPriority() {
-    setTasks(
-      sortByEnumProperty(
-        ["High", "Medium", "Low"],
-        "ascending",
-        tasks,
-        "priority"
-      )
-    );
-    setSorting({
-      priority: "ascending",
+      description: order,
     });
   }
-
-  function sortDescendingByPriority() {
-    setTasks(
-      sortByEnumProperty(
-        ["High", "Medium", "Low"],
-        "descending",
-        tasks,
-        "priority"
-      )
-    );
+  function sortByPriority(order) {
+    if (order === "ascending") {
+      setTasks(
+        sortByEnumProperty(
+          ["High", "Medium", "Low"],
+          "ascending",
+          tasks,
+          "priority"
+        )
+      );
+    } else {
+      setTasks(
+        sortByEnumProperty(
+          ["High", "Medium", "Low"],
+          "descending",
+          tasks,
+          "priority"
+        )
+      );
+    }
     setSorting({
-      priority: "descending",
+      priority: order,
     });
   }
 
@@ -129,8 +125,7 @@ function App() {
         <RowContainer>
           <HeaderRow
             sortByDescription={sortByDescription}
-            sortAscendingByPriority={sortAscendingByPriority}
-            sortDescendingByPriority={sortDescendingByPriority}
+            sortByPriority={sortByPriority}
             sortAscendingByDone={sortAscendingByDone}
             sortDescendingByDone={sortDescendingByDone}
             sorting={sorting}
