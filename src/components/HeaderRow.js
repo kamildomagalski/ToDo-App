@@ -1,12 +1,6 @@
 import React from "react";
 
-function HeaderRow({
-  sorting,
-  sortAscendingByDone,
-  sortDescendingByDone,
-  sortByDescription,
-  sortByPriority,
-}) {
+function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
   const handleSortDescription = () => {
     if (
       sorting.description === "descending" ||
@@ -26,10 +20,13 @@ function HeaderRow({
     }
   };
 
-  const handleSortDone =
-    sorting.done === "descending" || sorting.done === undefined
-      ? sortAscendingByDone
-      : sortDescendingByDone;
+  const handleSortDone = () => {
+    if (sorting.done === "descending" || sorting.done === undefined) {
+      sortByDone("ascending");
+    } else {
+      sortByDone("descending");
+    }
+  };
 
   return (
     <div className={"headerRow"}>

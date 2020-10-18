@@ -102,17 +102,14 @@ function App() {
     });
   }
 
-  function sortAscendingByDone() {
-    setTasks(sortByEnumProperty([true, false], "ascending", tasks, "done"));
+  function sortByDone(order) {
+    if (order === "ascending") {
+      setTasks(sortByEnumProperty([true, false], "ascending", tasks, "done"));
+    } else {
+      setTasks(sortByEnumProperty([true, false], "descending", tasks, "done"));
+    }
     setSorting({
-      done: "ascending",
-    });
-  }
-
-  function sortDescendingByDone() {
-    setTasks(sortByEnumProperty([true, false], "descending", tasks, "done"));
-    setSorting({
-      done: "descending",
+      done: order,
     });
   }
 
@@ -126,8 +123,6 @@ function App() {
           <HeaderRow
             sortByDescription={sortByDescription}
             sortByPriority={sortByPriority}
-            sortAscendingByDone={sortAscendingByDone}
-            sortDescendingByDone={sortDescendingByDone}
             sorting={sorting}
           />
           {currentTasks.map((task) => {
