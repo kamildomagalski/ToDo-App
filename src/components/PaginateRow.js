@@ -9,7 +9,7 @@ function PaginateRow({tasksPerPage, changeRows, indexOfFirstTask, indexOfLastTas
         <option value={10}>10</option>
         <option value={15}>15</option>
       </select>
-      <p className={'paginateRow__text'}>{indexOfFirstTask+1} - {(indexOfLastTask > numberOfTasks) ? numberOfTasks : indexOfLastTask} of {numberOfTasks}</p>
+      <p className={'paginateRow__text'}>{(indexOfFirstTask === 0)? indexOfFirstTask : indexOfFirstTask+1} - {(indexOfLastTask > numberOfTasks) ? numberOfTasks : indexOfLastTask} of {numberOfTasks}</p>
       <button onClick={()=>setPage(currentPage - 1)} disabled={(currentPage === 1)}>prev</button>
       <button onClick={()=>setPage(currentPage + 1)} disabled={(currentPage === numberOfPages)}>next</button>
     </div>
