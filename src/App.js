@@ -42,8 +42,7 @@ function App() {
   const addTask = (newTask) => {
     setTasks((prevState) => [...prevState, newTask]);
   };
-  const changeNumberOfRows = (e) => {
-    const { value } = e.target;
+  const changeNumberOfRows = (value) => {
     setTasksPerPage(value);
   };
   const setDone = (id) => {
@@ -123,6 +122,7 @@ function App() {
           <HeaderRow
             sortByDescription={sortByDescription}
             sortByPriority={sortByPriority}
+            sortByDone={sortByDone}
             sorting={sorting}
           />
           {currentTasks.map((task) => {

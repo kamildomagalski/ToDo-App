@@ -10,10 +10,15 @@ minTaskIndex,
   currentPage,
   setPage,
 }) {
+  
+  const handleNumberOfRowsChange=(e)=>{
+    changeNumberOfRows(e.target.value)
+  }
+  
   return (
     <div className={"paginateRow"}>
       <p className={"paginateRow__text"}>Rows per page:</p>
-      <select name={"rows"} value={tasksPerPage} onChange={changeNumberOfRows}>
+      <select name={"rows"} value={tasksPerPage} onChange={handleNumberOfRowsChange}>
         <option value={5}>5</option>
         <option value={10}>10</option>
         <option value={15}>15</option>
