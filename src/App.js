@@ -4,7 +4,7 @@ import TaskRow from "./components/TaskRow";
 import HeaderRow from "./components/HeaderRow";
 import AddTaskRow from "./components/AddTaskRow";
 import { sortByEnumProperty, sortByProperty } from "./functions/utilities";
-import PaginateRow from "./components/PaginateRow";
+import PaginationRow from "./components/PaginationRow";
 
 function App() {
   const [tasks, setTasks] = useState(
@@ -20,9 +20,9 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
 
   //Pagination
-  const indexOfLastTask = currentPage * tasksPerPage;
-  const indexOfFirstTask = indexOfLastTask - tasksPerPage;
-  const currentTasks = tasks.slice(indexOfFirstTask, indexOfLastTask);
+  const maxTaskIndex = currentPage * tasksPerPage;
+  const minTaskIndex = maxTaskIndex - tasksPerPage;
+  const currentTasks = tasks.slice(minTaskIndex, maxTaskIndex);
   const numberOfPages = Math.ceil(tasks.length / tasksPerPage);
 
   //set page to last when deleting last task
@@ -42,7 +42,7 @@ function App() {
   const addTask = (newTask) => {
     setTasks((prevState) => [...prevState, newTask]);
   };
-  const changeRows = (e) => {
+  const changeNumberOfRows = (e) => {
     const { value } = e.target;
     setTasksPerPage(value);
   };
@@ -60,7 +60,7 @@ function App() {
     );
   };
 
-  const setDelete = (id) => {
+  const deleteTask = (id) => {
     setTasks(tasks.filter((item) => item.id !== id));
   };
 
@@ -131,17 +131,17 @@ function App() {
                 key={task.id}
                 task={task}
                 setDone={setDone}
-                setDelete={setDelete}
+                deleteTask={deleteTask}
               />
             );
           })}
-          <PaginateRow
+          <PaginationRow
             tasksPerPage={tasksPerPage}
-            changeRows={changeRows}
+            changeNumberOfRows={changeNumberOfRows}
             numberOfPages={numberOfPages}
             numberOfTasks={tasks.length}
-            indexOfFirstTask={indexOfFirstTask}
-            indexOfLastTask={indexOfLastTask}
+            minTaskIndex={minTaskIndex}
+            maxTaskIndex={maxTaskIndex}
             currentPage={currentPage}
             setPage={setPage}
           />

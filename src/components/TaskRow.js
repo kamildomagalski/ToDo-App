@@ -1,6 +1,6 @@
 import React from "react";
 
-function TaskRow({ task, setDone, setDelete }) {
+function TaskRow({ task, setDone, deleteTask }) {
   return (
     <div className={"taskRow"}>
       <p className={"taskRow__task"}>{task.description}</p>
@@ -13,7 +13,7 @@ function TaskRow({ task, setDone, setDelete }) {
         onChange={() => setDone(task.id)}
       />
       <div className={"taskRow__btnWrapper"}>
-        <button className={"taskRow__btn"} onClick={() => setDelete(task.id)}>
+        <button className={"taskRow__btn"} onClick={() => deleteTask(task.id)}>
           d
         </button>
       </div>

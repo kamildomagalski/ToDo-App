@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 
 function AddTaskRow({ addTask }) {
   const [errors, setErrors] = useState({
-    description: "",
-    priority: "",
+    descriptionErrorMsg: "",
+    priorityErrorMsg: "",
   });
 
   const [newTask, setNewTask] = useState({
@@ -38,14 +38,14 @@ function AddTaskRow({ addTask }) {
     if (newTask.description.length < 5) {
       setErrors((prevState) => ({
         ...prevState,
-        description: "Description must contain at least 5 characters.",
+        descriptionErrorMsg: "Description must contain at least 5 characters.",
       }));
       isValid = false;
     }
     if (newTask.priority === "none") {
       setErrors((prevState) => ({
         ...prevState,
-        priority: "You have to set priority.",
+        priorityErrorMsg: "You have to set priority.",
       }));
       isValid = false;
     }
@@ -54,8 +54,8 @@ function AddTaskRow({ addTask }) {
 
   function clearErrors() {
     setErrors({
-      description: "",
-      priority: "",
+      descriptionErrorMsg: "",
+      priorityErrorMsg: "",
     });
   }
 
@@ -67,12 +67,12 @@ function AddTaskRow({ addTask }) {
       done: false,
     });
   }
-
-  function validateDescriptionOff() {
+// is it bug: double validation??
+  function shouldHideDescriptionMsgOff() {
     return newTask.description.length < 5;
   }
 
-  function validatePriorityOff() {
+  function shouldHidePriorityMsgOff() {
     return newTask.priority === "none";
   }
 
@@ -97,12 +97,12 @@ function AddTaskRow({ addTask }) {
           <button type={"submit"}>Add task</button>
         </div>
         <p
-          className={validateDescriptionOff() ? "addTaskRow__error" : "d-none"}
+          className={shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"}
         >
-          {errors.description}
+          {errors.descriptionErrorMsg}
         </p>
-        <p className={validatePriorityOff() ? "addTaskRow__error" : "d-none"}>
-          {errors.priority}
+        <p className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}>
+          {errors.priorityErrorMsg}
         </p>
       </form>
     </div>

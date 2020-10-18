@@ -1,10 +1,10 @@
 import React from "react";
 
-function PaginateRow({
+function PaginationRow({
   tasksPerPage,
-  changeRows,
-  indexOfFirstTask,
-  indexOfLastTask,
+                       changeNumberOfRows,
+minTaskIndex,
+  maxTaskIndex,
   numberOfPages,
   numberOfTasks,
   currentPage,
@@ -13,14 +13,15 @@ function PaginateRow({
   return (
     <div className={"paginateRow"}>
       <p className={"paginateRow__text"}>Rows per page:</p>
-      <select name={"rows"} value={tasksPerPage} onChange={changeRows}>
+      <select name={"rows"} value={tasksPerPage} onChange={changeNumberOfRows}>
         <option value={5}>5</option>
         <option value={10}>10</option>
         <option value={15}>15</option>
       </select>
       <p className={"paginateRow__text"}>
-        {indexOfFirstTask === 0 ? indexOfFirstTask : indexOfFirstTask + 1} -{" "}
-        {indexOfLastTask > numberOfTasks ? numberOfTasks : indexOfLastTask} of{" "}
+        {/*bug display number of tasks when no tasks or deleting last task*/}
+        {minTaskIndex === 0 ? minTaskIndex : minTaskIndex + 1} - {" "}
+        {maxTaskIndex > numberOfTasks ? numberOfTasks : maxTaskIndex} of{" "}
         {numberOfTasks}
       </p>
       <button
@@ -30,6 +31,7 @@ function PaginateRow({
         prev
       </button>
       <button
+        // bug nodisabled button when no tasks
         onClick={() => setPage(currentPage + 1)}
         disabled={currentPage === numberOfPages}
       >
@@ -39,4 +41,4 @@ function PaginateRow({
   );
 }
 
-export default PaginateRow;
+export default PaginationRow;
