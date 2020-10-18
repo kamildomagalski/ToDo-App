@@ -67,19 +67,15 @@ function App() {
   const setPage = (number) => {
     setCurrentPage(number);
   };
-
-  function sortAscendingByDescription() {
-    setTasks(sortByProperty("ascending", tasks, "description"));
+  function sortByDescription(order) {
+    if (order === 'ascending') {
+      setTasks(sortByProperty('ascending', tasks, 'description'))
+    } else {
+      setTasks(sortByProperty('descending', tasks, 'description'))
+    }
     setSorting({
-      description: "ascending",
-    });
-  }
-
-  function sortDescendingByDescription() {
-    setTasks(sortByProperty("descending", tasks, "description"));
-    setSorting({
-      description: "descending",
-    });
+      description: order
+    })
   }
 
   function sortAscendingByPriority() {
@@ -132,8 +128,7 @@ function App() {
         </RowContainer>
         <RowContainer>
           <HeaderRow
-            sortDescendingByDescription={sortDescendingByDescription}
-            sortAscendingByDescription={sortAscendingByDescription}
+            sortByDescription={sortByDescription}
             sortAscendingByPriority={sortAscendingByPriority}
             sortDescendingByPriority={sortDescendingByPriority}
             sortAscendingByDone={sortAscendingByDone}

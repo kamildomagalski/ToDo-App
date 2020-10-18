@@ -8,11 +8,17 @@ function HeaderRow({
   sortDescendingByPriority,
   sortAscendingByDone,
   sortDescendingByDone,
+                     sortByDescription
 }) {
-  const handleSortDescription =
-    sorting.description === "descending" || sorting.description === undefined
-      ? sortAscendingByDescription
-      : sortDescendingByDescription;
+  
+  const handleSortDescription= ()=>{
+    if(sorting.description === 'descending' || sorting.description === undefined){
+      sortByDescription('ascending')
+    }else{
+      sortByDescription('descending')
+    }
+  }
+  
   const handleSortPriority =
     sorting.priority === "descending" || sorting.priority === undefined
       ? sortAscendingByPriority
