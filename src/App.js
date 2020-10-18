@@ -4,22 +4,11 @@ import TaskRow from "./components/TaskRow";
 import HeaderRow from "./components/HeaderRow";
 import AddTaskRow from "./components/AddTaskRow";
 import {sortByEnumProperty, sortByProperty} from './functions/utilities'
-import {v4 as uuidv4} from 'uuid'
 import PaginateRow from "./components/PaginateRow";
 
 
 function App() {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
-  const [newTask, setNewTask] = useState({
-    id: '',
-    description: '',
-    priority: 'none',
-    done: false
-  })
-  const [errors, setErrors] = useState({
-    description: '',
-    priority: ''
-  })
   const [sorting, setSorting] = useState(JSON.parse(localStorage.getItem('sorting')) || {})
   //pagination states
   const [tasksPerPage, setTasksPerPage] = useState(JSON.parse(localStorage.getItem('tasksPerPage')) || 5)
@@ -38,33 +27,18 @@ function App() {
     setCurrentPage(1)
   }, [tasksPerPage])
   
-  
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
     localStorage.setItem('tasksPerPage', JSON.stringify(tasksPerPage))
     localStorage.setItem('sorting', JSON.stringify(sorting))
   }, [tasks, tasksPerPage, sorting])
   
-  const setTask = (e) => {
-    const {name, value} = e.target;
-    let id = uuidv4();
-    setNewTask(prevState => ({
-      ...prevState,
-      id,
-      [name]: value
-    }))
-  }
-  
-  const addTask = (e) => {
-    e.preventDefault();
-    if (!validate()) return
+  const addTask = (newTask) => {
     setTasks(prevState => ([
         ...prevState,
         newTask,
       ])
     )
-    clearNewTask();
-    clearErrors()
   }
   const changeRows = (e) => {
     const {value} = e.target
@@ -90,57 +64,15 @@ function App() {
     setCurrentPage(number)
   }
   
-  function validate() {
-    let isValid = true
-    if (newTask.description.length < 5) {
-      setErrors(prevState => ({
-        ...prevState,
-        description: 'Description must contain at least 5 characters.'
-      }))
-      isValid = false
-    }
-    if (newTask.priority === 'none') {
-      setErrors(prevState => ({
-        ...prevState,
-        priority: 'You have to set priority.'
-      }))
-      isValid = false
-    }
-    return isValid
-  }
-  
-  function clearErrors() {
-    setErrors({
-      description: '',
-      priority: ''
-    })
-  }
-  
-  function clearNewTask() {
-    setNewTask({
-      id: '',
-      description: '',
-      priority: 'none',
-      done: false
-    })
-  }
-  
   function sortAscendingByDescription() {
-    setTasks(sortByProperty(
-      'ascending',
-      tasks,
-      'description'
-    ))
+    setTasks(sortByProperty('ascending', tasks, 'description'))
     setSorting({
       description: 'ascending'
     })
   }
   
   function sortDescendingByDescription() {
-    setTasks(sortByProperty(
-      'descending',
-      tasks,
-      'description'
+    setTasks(sortByProperty('descending', tasks, 'description'
     ))
     setSorting({
       description: 'descending'
@@ -148,34 +80,21 @@ function App() {
   }
   
   function sortAscendingByPriority() {
-    setTasks(sortByEnumProperty(
-      ['High', 'Medium', 'Low'],
-      'ascending',
-      tasks,
-      'priority'))
+    setTasks(sortByEnumProperty(['High', 'Medium', 'Low'], 'ascending', tasks, 'priority'))
     setSorting({
       priority: 'ascending'
     })
   }
   
   function sortDescendingByPriority() {
-    setTasks(sortByEnumProperty(
-      ['High', 'Medium', 'Low'],
-      'descending',
-      tasks,
-      'priority'))
+    setTasks(sortByEnumProperty(['High', 'Medium', 'Low'], 'descending', tasks, 'priority'))
     setSorting({
       priority: 'descending'
     })
   }
   
   function sortAscendingByDone() {
-    setTasks(sortByEnumProperty(
-      [true, false],
-      'ascending',
-      tasks,
-      'done'
-    ))
+    setTasks(sortByEnumProperty([true, false], 'ascending', tasks, 'done'))
     setSorting({
       done: 'ascending'
     })
@@ -197,7 +116,7 @@ function App() {
     <section className={'app'}>
       <div className={'container'}>
         <RowContainer>
-          <AddTaskRow newTask={newTask} setTask={setTask} addTask={addTask} errors={errors}/>
+          <AddTaskRow  addTask={addTask}/>
         </RowContainer>
         <RowContainer>
           <HeaderRow sortDescendingByDescription={sortDescendingByDescription}
