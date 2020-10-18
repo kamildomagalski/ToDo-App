@@ -13,9 +13,6 @@ function PaginationRow({
   const handleNumberOfRowsChange = (e) => {
     changeNumberOfRows(e.target.value);
   };
-  console.log("minTaskIndex " + minTaskIndex);
-  console.log("maxTaskIndex " + maxTaskIndex);
-  console.log("numberOfTasks " + numberOfTasks);
 
   function visibleRange() {
     if (minTaskIndex === 0 && numberOfTasks === 0) {
@@ -31,8 +28,6 @@ function PaginationRow({
     }
   }
   
-  console.log(numberOfPages);
-  console.log(currentPage);
   return (
     <div className={"paginateRow"}>
       <p className={"paginateRow__text"}>Rows per page:</p>
