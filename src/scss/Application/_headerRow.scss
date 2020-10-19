@@ -12,6 +12,8 @@
     line-height: 1.3rem;
     padding: 15px 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
     &-taskName {
       flex-grow: 2;
@@ -25,6 +27,14 @@
     &-done {
       flex-grow: 1;
       max-width: 70px;
+    }
+  }
+  &__icon{
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    margin-left: 5px ;
+    &-dim{
+color: $color-grey;
     }
   }
 }
