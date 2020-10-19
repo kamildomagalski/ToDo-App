@@ -1,25 +1,28 @@
 //Colors
 $color-light: white;
-$color-dark: darkgrey;
-$color-warning: darkred;
+$color-grey: dimgrey;
+$color-dark: #222222;
+$color-warning: orange;
 $bg-color-light: lightgrey;
-$bg-color-dark: darkgrey;
+$bg-color-orange: orange;
+$bg-color-dark: #373a40;
+$border-color-light: #dedede;
+$border-color-dark: #222222;
 
 //Fonts
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&family=Open+Sans:wght@300;400;600;700&display=swap');
-$font-base: 'Open Sans', sans-serif;
-$font-alt: 'Merriweather', serif;
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&family=Open+Sans:wght@300;400;600;700&display=swap");
+$font-base: "Open Sans", sans-serif;
+$font-alt: "Merriweather", serif;
 
 //Mixins
-@mixin desktop(){
+@mixin desktop() {
   @media screen and (min-width: 900px) {
-    @content
+    @content;
   }
 }
 
-@mixin tablet(){
+@mixin tablet() {
   @media screen and (min-width: 500px) {
-    @content
+    @content;
   }
 }
-

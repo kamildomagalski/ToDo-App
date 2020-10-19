@@ -1,7 +1,8 @@
 .rowContainer {
-  border: 3px solid lightgray;
+  border: 5px solid $border-color-light;
+  border-radius: 2px;
   margin: 15px 0;
-  width: 100%;
-  min-width: 300px;
-
+  min-width: 310px;
+  @include tablet {
+  }
 }

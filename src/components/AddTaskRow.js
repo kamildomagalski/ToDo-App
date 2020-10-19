@@ -67,7 +67,7 @@ function AddTaskRow({ addTask }) {
       done: false,
     });
   }
-// is it bug: double validation??
+  // is it bug: double validation??
   function shouldHideDescriptionMsgOff() {
     return newTask.description.length < 5;
   }
@@ -85,26 +85,38 @@ function AddTaskRow({ addTask }) {
           onChange={setTask}
           type={"text"}
           placeholder={"Enter task description"}
+          className={"addTaskRow__input addTaskRow__input-text"}
         />
         <div className={"wrapper"}>
-          <p>Priority</p>
-          <select value={newTask.priority} name={"priority"} onChange={setTask}>
-            <option value={"none"} />
+          <p>Priority:</p>
+          <select
+            value={newTask.priority}
+            name={"priority"}
+            onChange={setTask}
+            className={"addTaskRow__input addTaskRow__input-select"}
+          >
+            <option value={"none"}>select...</option>
             <option value={"Low"}>Low</option>
             <option value={"Medium"}>Medium</option>
             <option value={"High"}>High</option>
           </select>
-          <button type={"submit"}>Add task</button>
+          <button type={"submit"} className={"addTaskRow__btn"}>
+            Add task
+          </button>
         </div>
-        <p
-          className={shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"}
-        >
-          {errors.descriptionErrorMsg}
-        </p>
-        <p className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}>
-          {errors.priorityErrorMsg}
-        </p>
       </form>
+      <p
+        className={
+          shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"
+        }
+      >
+        {errors.descriptionErrorMsg}
+      </p>
+      <p
+        className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}
+      >
+        {errors.priorityErrorMsg}
+      </p>
     </div>
   );
 }
