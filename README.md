@@ -3,6 +3,8 @@
 
 Simple and very common project of ToDoApp to manage your daily tasks. 
  
+Try it out! [Demo](https://todoapp-5c66f.web.app/)
+ 
 <hr>
 
 ## Table of contents
