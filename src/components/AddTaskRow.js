@@ -105,15 +105,12 @@ function AddTaskRow({ addTask }) {
           </button>
         </div>
       </form>
-      <p
-        className={
-          shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"
+      <p className={shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"
         }
       >
         {errors.descriptionErrorMsg}
       </p>
-      <p
-        className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}
+      <p className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}
       >
         {errors.priorityErrorMsg}
       </p>

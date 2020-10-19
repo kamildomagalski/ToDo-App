@@ -31,13 +31,13 @@ function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
 
   return (
     <div className={"headerRow"}>
-      <p className={"headerRow__title"} onClick={handleSortDescription}>
+      <p className={"headerRow__title headerRow__title-taskName"} onClick={handleSortDescription}>
         Task name
       </p>
-      <p className={"headerRow__title"} onClick={handleSortPriority}>
+      <p className={"headerRow__title headerRow__title-priority"} onClick={handleSortPriority}>
         Priority
       </p>
-      <p className={"headerRow__title"} onClick={handleSortDone}>
+      <p className={"headerRow__title headerRow__title-done"} onClick={handleSortDone}>
         Done
       </p>
     </div>

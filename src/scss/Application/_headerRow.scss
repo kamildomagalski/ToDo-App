@@ -1,12 +1,30 @@
 .headerRow {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background-color: darkgray;
+  background-color: $bg-color-dark;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
   justify-content: space-between;
+  padding: 0 15px;
 
   &__title {
-    color: white;
+    color: $color-light;
+    line-height: 1.3rem;
+    padding: 15px 0;
     cursor: pointer;
+
+    &-taskName {
+      flex-grow: 2;
+    }
+
+    &-priority {
+      flex-grow: 1;
+      max-width: 120px;
+    }
+
+    &-done {
+      flex-grow: 1;
+      max-width: 70px;
+    }
   }
 }
