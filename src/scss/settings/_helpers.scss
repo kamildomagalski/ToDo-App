@@ -1,0 +1,25 @@
+//Colors
+$color-light: white;
+$color-dark: darkgrey;
+$color-warning: darkred;
+$bg-color-light: lightgrey;
+$bg-color-dark: darkgrey;
+
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&family=Open+Sans:wght@300;400;600;700&display=swap');
+$font-base: 'Open Sans', sans-serif;
+$font-alt: 'Merriweather', serif;
+
+//Mixins
+@mixin desktop(){
+  @media screen and (min-width: 900px) {
+    @content
+  }
+}
+
+@mixin tablet(){
+  @media screen and (min-width: 500px) {
+    @content
+  }
+}
+

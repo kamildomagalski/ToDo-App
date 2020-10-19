@@ -1,10 +1,11 @@
-@import 'reset';
-@import 'base';
+@import 'settings/reset';
+@import "settings/helpers";
+@import 'settings/base';
 
 
-@import 'app';
-@import "rowContainer";
-@import "taskRow";
-@import "headerRow";
-@import "addTaskRow";
-@import "paginateRow";
+@import 'Application/toDoApp';
+@import "Application/rowContainer";
+@import "Application/taskRow";
+@import "Application/headerRow";
+@import "Application/addTaskRow";
+@import "Application/paginateRow";
