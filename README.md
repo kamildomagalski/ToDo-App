@@ -18,7 +18,7 @@ Simple and very common project of ToDoApp to manage your daily tasks.
 This in a simple app created for the recruitment purposes. <br>
 It uses LocalStorage to keep entered tasks in browser memory. This increases  functionality as data persist after closing the app tab. 
 In App You can add and delete tasks, sort them ascending/descending by name, priority or status (done/not done).
-Tasks are display on a selected number of rows and split on multiple pages in needed.
+Tasks are display on a selected number of rows and split on multiple pages if needed.
 <hr>
 
 ## Technologies
@@ -74,7 +74,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ### How to use it?
 1. On first run you have to enter a few tasks (browser local storage will be empty)
 2. At the top you can add new tasks by filling form and hitting add task button. Proper validation will be executed.
-3. Below the tasks are beeing displayed in a table-looking section. 
+3. Below, the tasks are being displayed in a table-looking section. 
 4. Clicking on column headers you will sort tasks
 5. On each task can be set to done by clicking empty square, it can be also undone.
 6. When you mouse-enter on task, a trash bin icon will be desplayed (on mobile devices it's always on). By clicking it you delete this task.
@@ -88,6 +88,7 @@ List of completed features:
 
 
 Possible toDo's:
+* custom inputs
 * add swpie events on mobile devices
 * external database inteed of local storage
 * support for different languages
