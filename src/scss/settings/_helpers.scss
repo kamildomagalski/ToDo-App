@@ -27,4 +27,8 @@ $font-alt: "Merriweather", serif;
   }
 }
 
-
+@mixin mobile(){
+  @media only screen and (hover: none) and (pointer: coarse)  {
+    @content
+  }
+}

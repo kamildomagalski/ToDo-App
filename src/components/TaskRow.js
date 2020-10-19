@@ -31,7 +31,7 @@ function TaskRow({ task, setDone, deleteTask }) {
         <div className={"taskRow__btnWrapper"}>
           <FontAwesomeIcon
             icon={"trash"}
-            className={"taskRow__btn"}
+            className={"taskRow__deleteBtn"}
             onClick={() => deleteTask(task.id)}
           />
         </div>
