@@ -113,7 +113,7 @@ function ToDoApp() {
   }
 
   return (
-    <section className={"app"}>
+    <section className={"toDoApp"}>
       <div className={"container"}>
         <RowContainer>
           <AddTaskRow addTask={addTask} />

@@ -7,6 +7,8 @@ import {
   faSortDown,
   faTrash,
   faCheck,
+  faChevronRight,
+  faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
@@ -18,4 +20,4 @@ function App() {
 }
 
 export default App;
-library.add(faSort, faSortUp, faSortDown, faTrash, faCheck);
+library.add(faSort, faSortUp, faSortDown, faTrash, faCheck, faChevronRight, faChevronLeft);
