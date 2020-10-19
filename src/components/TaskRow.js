@@ -1,21 +1,40 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TaskRow({ task, setDone, deleteTask }) {
+  const isCheckedIconVisible = () => {
+    if (task.done === true) {
+      return (
+        <span className={" taskRow__checkbox taskRow__checkbox-done"}>
+          <FontAwesomeIcon icon={"check"} className={"taskRow__checkIcon"} />
+        </span>
+      );
+    } else {
+      return <span className={"taskRow__checkbox"} />;
+    }
+  };
   return (
     <div className={"taskRow"}>
-      <p className={"taskRow__task"}>{task.description}</p>
-      <p className={"taskRow__priority"}>{task.priority}</p>
-      <input
-        className={"taskRow__checkbox"}
-        name={"done"}
-        type={"checkbox"}
-        checked={task.done}
-        onChange={() => setDone(task.id)}
-      />
-      <div className={"taskRow__btnWrapper"}>
-        <button className={"taskRow__btn"} onClick={() => deleteTask(task.id)}>
-          d
-        </button>
+      <p className={"taskRow__text taskRow__text-taskName"}>
+        {task.description}
+      </p>
+      <div className={"taskRow__wrapper"}>
+        <p className={"taskRow__text taskRow__text-priority"}>
+          {task.priority}
+        </p>
+        <span
+          onClick={() => setDone(task.id)}
+          className={"taskRow__checkboxWrapper"}
+        >
+          {isCheckedIconVisible()}
+        </span>
+        <div className={"taskRow__btnWrapper"}>
+          <FontAwesomeIcon
+            icon={"trash"}
+            className={"taskRow__btn"}
+            onClick={() => deleteTask(task.id)}
+          />
+        </div>
       </div>
     </div>
   );

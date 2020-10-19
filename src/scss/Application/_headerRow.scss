@@ -6,7 +6,10 @@
   border-top-left-radius: 2px;
   justify-content: space-between;
   padding: 0 15px;
+&__wrapper{
+  display: flex;
 
+}
   &__title {
     color: $color-light;
     line-height: 1.3rem;
@@ -16,17 +19,23 @@
     align-items: center;
 
     &-taskName {
-      flex-grow: 2;
+      width: 50%;
+      flex-grow: 1;
     }
 
     &-priority {
-      flex-grow: 1;
-      max-width: 120px;
+   width: 80px;
+      @include tablet{
+        width: 90px;
+      }
     }
 
     &-done {
-      flex-grow: 1;
-      max-width: 70px;
+      width: 60px;
+      @include tablet{
+        width: 80px;
+
+      }
     }
   }
   &__icon{

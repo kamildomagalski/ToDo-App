@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
   const handleSortDescription = () => {
     if (
@@ -42,12 +43,14 @@ function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
       <p className={"headerRow__title headerRow__title-taskName"} onClick={handleSortDescription}>
         Task name <span>{sortIcon('description')}</span>
       </p>
+      <div className={'headerRow__wrapper'}>
       <p className={"headerRow__title headerRow__title-priority"} onClick={handleSortPriority}>
         Priority {sortIcon('priority')}
       </p>
       <p className={"headerRow__title headerRow__title-done"} onClick={handleSortDone}>
         Done {sortIcon('done')}
       </p>
+      </div>
     </div>
   );
 }
