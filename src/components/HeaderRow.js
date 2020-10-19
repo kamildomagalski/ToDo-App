@@ -1,5 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
   const handleSortDescription = () => {
@@ -30,26 +30,42 @@ function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
     }
   };
 
-  const sortIcon=(sortingKey)=>{
-    if(sorting[`${sortingKey}`] === 'ascending'){
-      return <FontAwesomeIcon icon={'sort-up'} className={'headerRow__icon'}/>
-    } else if(sorting[`${sortingKey}`] === 'descending'){
-      return <FontAwesomeIcon icon={'sort-down'} className={'headerRow__icon'}/>
+  const sortIcon = (sortingKey) => {
+    if (sorting[`${sortingKey}`] === "ascending") {
+      return <FontAwesomeIcon icon={"sort-up"} className={"headerRow__icon"} />;
+    } else if (sorting[`${sortingKey}`] === "descending") {
+      return (
+        <FontAwesomeIcon icon={"sort-down"} className={"headerRow__icon"} />
+      );
     }
-    return <FontAwesomeIcon icon={'sort'} className={'headerRow__icon headerRow__icon-dim'}/>
-  }
+    return (
+      <FontAwesomeIcon
+        icon={"sort"}
+        className={"headerRow__icon headerRow__icon-dim"}
+      />
+    );
+  };
   return (
     <div className={"headerRow"}>
-      <p className={"headerRow__title headerRow__title-taskName"} onClick={handleSortDescription}>
-        Task name <span>{sortIcon('description')}</span>
+      <p
+        className={"headerRow__title headerRow__title-taskName"}
+        onClick={handleSortDescription}
+      >
+        Task name <span>{sortIcon("description")}</span>
       </p>
-      <div className={'headerRow__wrapper'}>
-      <p className={"headerRow__title headerRow__title-priority"} onClick={handleSortPriority}>
-        Priority {sortIcon('priority')}
-      </p>
-      <p className={"headerRow__title headerRow__title-done"} onClick={handleSortDone}>
-        Done {sortIcon('done')}
-      </p>
+      <div className={"headerRow__wrapper"}>
+        <p
+          className={"headerRow__title headerRow__title-priority"}
+          onClick={handleSortPriority}
+        >
+          Priority {sortIcon("priority")}
+        </p>
+        <p
+          className={"headerRow__title headerRow__title-done"}
+          onClick={handleSortDone}
+        >
+          Done {sortIcon("done")}
+        </p>
       </div>
     </div>
   );

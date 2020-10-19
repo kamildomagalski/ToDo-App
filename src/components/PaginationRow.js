@@ -27,7 +27,7 @@ function PaginationRow({
       return `${minTaskIndex + 1} - ${maxTaskIndex} of ${numberOfTasks}`;
     }
   }
-  
+
   return (
     <div className={"paginateRow"}>
       <p className={"paginateRow__text"}>Rows per page:</p>
