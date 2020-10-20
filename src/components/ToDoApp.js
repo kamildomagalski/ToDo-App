@@ -66,6 +66,7 @@ function ToDoApp() {
   const setPage = (number) => {
     setCurrentPage(number);
   };
+
   function sortByDescription(order) {
     if (order === "ascending") {
       setTasks(sortByProperty("ascending", tasks, "description"));
@@ -76,6 +77,7 @@ function ToDoApp() {
       description: order,
     });
   }
+
   function sortByPriority(order) {
     if (order === "ascending") {
       setTasks(

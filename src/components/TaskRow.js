@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TaskRow({ task, setDone, deleteTask }) {
+  //turn off error notification when changing inputs
   const isCheckedIconVisible = () => {
     if (task.done === true) {
       return (

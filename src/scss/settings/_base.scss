@@ -1,6 +1,5 @@
-html *{
+html * {
   box-sizing: border-box;
-
 }
 
 body {
@@ -24,9 +23,8 @@ img {
     max-width: 650px;
     padding: 0 20px;
   }
-  @include desktop{
+  @include desktop {
     max-width: 1000px;
     padding: 0 80px;
-
   }
 }

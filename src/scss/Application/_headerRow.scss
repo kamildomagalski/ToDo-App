@@ -6,9 +6,11 @@
   border-top-left-radius: 2px;
   justify-content: space-between;
   padding: 0 15px;
+
   &__wrapper {
     display: flex;
   }
+
   &__title {
     color: $color-light;
     line-height: 1.3rem;
@@ -42,10 +44,12 @@
       }
     }
   }
+
   &__icon {
     font-size: 1.2rem;
     line-height: 1.3rem;
     margin-left: 5px;
+
     &-dim {
       color: $color-grey;
     }

@@ -22,7 +22,6 @@ function HeaderRow({ sorting, sortByDescription, sortByPriority, sortByDone }) {
   };
 
   const handleSortDone = () => {
-    // bug when try to sort on empty array
     if (sorting.done === "descending" || sorting.done === undefined) {
       sortByDone("ascending");
     } else {

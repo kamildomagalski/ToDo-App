@@ -15,6 +15,7 @@ function PaginationRow({
     changeNumberOfRows(e.target.value);
   };
 
+  //logic for printing correct pagination data depending on number of tasks
   function visibleRange() {
     if (minTaskIndex === 0 && numberOfTasks === 0) {
       return `${minTaskIndex} - ${numberOfTasks} of ${numberOfTasks}`;
@@ -50,7 +51,7 @@ function PaginationRow({
       >
         <FontAwesomeIcon
           icon={"chevron-left"}
-          className={'paginationRow__icon'}
+          className={"paginationRow__icon"}
         />
       </button>
       <button
@@ -60,7 +61,7 @@ function PaginationRow({
       >
         <FontAwesomeIcon
           icon={"chevron-right"}
-          className={'paginationRow__icon'}
+          className={"paginationRow__icon"}
         />
       </button>
     </div>
