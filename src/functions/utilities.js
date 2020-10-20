@@ -1,3 +1,11 @@
+/**
+ * Sort by enum property operation
+ * @param {array} priorityArray- array of priority params, listed from most relevant to the least
+ * @param {string} sortingType- choose 'ascending or 'descending'
+ * @param {array} dataArray- enter an array of objects you want to sort
+ * @param {string} sortingKey- name of the key you want to sort through
+ * @returns {*} returns a new, sorted array
+ */
 export function sortByEnumProperty(
   priorityArray,
   sortingType,
@@ -22,12 +30,20 @@ export function sortByEnumProperty(
     return firstItem - secondItem;
   });
 
-  //new array after sorting
+  //returns new array after sorting
   return tmp;
 }
 
+/**
+ * Sort by property operation
+ * @param {string} sortingType- choose 'ascending or 'descending'
+ * @param {array} dataArray- enter an array of objects you want to sort
+ * @param {string} sortingKey- name of the key you want to sort through
+ * @returns {*} returns a new, sorted array
+ */
 export function sortByProperty(sortingType, dataArray, sortingKey) {
   let numA, numB;
+  //reverse sorting based on sortingType value
   if (sortingType === "ascending") {
     numA = -1;
     numB = 1;
@@ -35,8 +51,9 @@ export function sortByProperty(sortingType, dataArray, sortingKey) {
     numA = 1;
     numB = -1;
   }
-
+  //make a copy of an existing array
   let tmp = dataArray.map((el) => el);
+  //sorting function
   tmp.sort(function (a, b) {
     if (a[`${sortingKey}`].toLowerCase() < b[`${sortingKey}`].toLowerCase()) {
       return numA;
@@ -46,5 +63,6 @@ export function sortByProperty(sortingType, dataArray, sortingKey) {
     }
     return 0;
   });
+  //returns new array after sorting
   return tmp;
 }
