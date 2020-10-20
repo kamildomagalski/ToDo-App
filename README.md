@@ -36,6 +36,9 @@ Tasks are display on a selected number of rows and split on multiple pages if ne
 
 
 #### To build the project use:
+### `npm install`
+Runs the installation of all necessary packages to run the project.
+
 
 ### `npm start`
 
