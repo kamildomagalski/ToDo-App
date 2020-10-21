@@ -56,9 +56,9 @@ function AddTaskRow({ addTask }) {
     }
     return isValid;
   }
-  
+
   console.log(errors);
-  
+
   function clearErrors() {
     setErrors({
       descriptionErrorMsg: "",
@@ -96,8 +96,12 @@ function AddTaskRow({ addTask }) {
           className={"addTaskRow__input addTaskRow__input-text"}
         />
         <div className={"wrapper"}>
-          <p className={'addTaskRow__text'}>Priority:</p>
-          <Select options={["Low", "Medium", "High"]} selectValue={newTask.priority} changeHandler={setTaskPriority}/>
+          <p className={"addTaskRow__text"}>Priority:</p>
+          <Select
+            options={["Low", "Medium", "High"]}
+            selectValue={newTask.priority}
+            changeHandler={setTaskPriority}
+          />
           <button type={"submit"} className={"addTaskRow__btn"}>
             Add task
           </button>

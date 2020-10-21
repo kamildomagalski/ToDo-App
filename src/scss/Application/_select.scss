@@ -12,8 +12,8 @@ $selected-option-padding: 5px 10px;
 $max-option-list-height: 200px;
 $arrow-size: 11px;
 
-.selectBox {
-margin: 0 5px;
+.select {
+  margin: 0 5px;
 
   //predefined styles
   width: $select-width;
@@ -51,7 +51,6 @@ margin: 0 5px;
           transition: all 0.4s;
         }
       }
-
     }
   }
 
@@ -83,7 +82,6 @@ margin: 0 5px;
     max-height: $max-option-list-height;
     overflow-y: auto;
     opacity: 1;
-
   }
 
   .option {
