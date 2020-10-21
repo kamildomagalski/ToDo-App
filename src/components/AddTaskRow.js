@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Select from "./SelectBox";
 
 function AddTaskRow({ addTask }) {
   const [errors, setErrors] = useState({
@@ -24,7 +25,6 @@ function AddTaskRow({ addTask }) {
 
   const setTask = (e) => {
     const { name, value } = e.target;
-    // let id = newTask.id ? newTask.id : uuidv4()
     let id = uuidv4();
     setNewTask((prevState) => ({
       ...prevState,
@@ -89,6 +89,7 @@ function AddTaskRow({ addTask }) {
         />
         <div className={"wrapper"}>
           <p>Priority:</p>
+          <Select options={['Low', 'Medium', 'High']}/>
           <select
             value={newTask.priority}
             name={"priority"}
