@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+/**
+ *
+ * @param {array} options- available options to choose
+ * @param {string} selectValue- curent value of the select box
+ * @param {function} changeHandler- callback that returns some value to change parents state
+ * @returns {JSX.Element} fully functional Component
+ */
 function Select({ options, selectValue, changeHandler}) {
   const [selectOptions] = useState(options);
   const [isSelectOpen, setIsSelectOpen] = useState(false);

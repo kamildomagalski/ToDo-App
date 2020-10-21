@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Select from "./SelectBox";
+import Select from "./Select";
 
 function AddTaskRow({ addTask }) {
   const [errors, setErrors] = useState({
@@ -56,7 +56,9 @@ function AddTaskRow({ addTask }) {
     }
     return isValid;
   }
-
+  
+  console.log(errors);
+  
   function clearErrors() {
     setErrors({
       descriptionErrorMsg: "",
@@ -68,7 +70,7 @@ function AddTaskRow({ addTask }) {
     setNewTask({
       id: "",
       description: "",
-      priority: "none",
+      priority: "select...",
       done: false,
     });
   }
@@ -79,7 +81,7 @@ function AddTaskRow({ addTask }) {
   }
 
   function shouldHidePriorityMsgOff() {
-    return newTask.priority === "none";
+    return newTask.priority === "select...";
   }
 
   return (
@@ -94,19 +96,8 @@ function AddTaskRow({ addTask }) {
           className={"addTaskRow__input addTaskRow__input-text"}
         />
         <div className={"wrapper"}>
-          <p>Priority:</p>
+          <p className={'addTaskRow__text'}>Priority:</p>
           <Select options={["Low", "Medium", "High"]} selectValue={newTask.priority} changeHandler={setTaskPriority}/>
-          {/*<select*/}
-          {/*  value={newTask.priority}*/}
-          {/*  name={"priority"}*/}
-          {/*  onChange={setTask}*/}
-          {/*  className={"addTaskRow__input addTaskRow__input-select"}*/}
-          {/*>*/}
-          {/*  <option value={"none"}>select...</option>*/}
-          {/*  <option value={"Low"}>Low</option>*/}
-          {/*  <option value={"Medium"}>Medium</option>*/}
-          {/*  <option value={"High"}>High</option>*/}
-          {/*</select>*/}
           <button type={"submit"} className={"addTaskRow__btn"}>
             Add task
           </button>

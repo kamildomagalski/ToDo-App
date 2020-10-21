@@ -19,7 +19,10 @@
       flex-grow: 1;
     }
   }
-
+  &__text{
+    color: $color-light
+  }
+  
   &__input {
     height: 30px;
     color: $color-dark;
@@ -41,9 +44,7 @@
       }
     }
 
-    &-select {
-      margin: 0 5px;
-    }
+
   }
 
   .wrapper {
