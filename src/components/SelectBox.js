@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Select({ options }) {
+function Select({ options, selectValue, changeHandler}) {
   const [selectOptions] = useState(options);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [selected, setSelected] = useState("select...");
 
   const handleVisible = () => {
     setIsSelectOpen((prevState) => !prevState);
@@ -13,7 +12,7 @@ function Select({ options }) {
     setIsSelectOpen(false);
   };
   const handleSelectedChange = (e) => {
-    setSelected(e.target.value);
+    changeHandler(e.target.value);
     handleClose();
   };
 
@@ -21,7 +20,7 @@ function Select({ options }) {
     <div className={"select"}>
       <div className={"selectBox"}>
         <div className={"selected"} onClick={handleVisible}>
-          <p className={"selected__text"}>{selected}</p>
+          <p className={"selected__text"}>{selectValue}</p>
           <span className={"iconWrapper"}>
             <FontAwesomeIcon icon={"chevron-down"} className={isSelectOpen ? "iconWrapper__icon" : "selected__icon-rotate"}/>
           </span>

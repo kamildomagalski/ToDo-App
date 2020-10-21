@@ -11,7 +11,7 @@ function AddTaskRow({ addTask }) {
   const [newTask, setNewTask] = useState({
     id: "",
     description: "",
-    priority: "none",
+    priority: "select...",
     done: false,
   });
 
@@ -22,7 +22,12 @@ function AddTaskRow({ addTask }) {
     clearErrors();
     clearNewTask();
   };
-
+  const setTaskPriority = (value) => {
+    setNewTask((prevState) => ({
+      ...prevState,
+      priority: value,
+    }));
+  };
   const setTask = (e) => {
     const { name, value } = e.target;
     let id = uuidv4();
@@ -42,7 +47,7 @@ function AddTaskRow({ addTask }) {
       }));
       isValid = false;
     }
-    if (newTask.priority === "none") {
+    if (newTask.priority === "select...") {
       setErrors((prevState) => ({
         ...prevState,
         priorityErrorMsg: "You have to set priority.",
@@ -67,6 +72,7 @@ function AddTaskRow({ addTask }) {
       done: false,
     });
   }
+
   // is it bug: double validation??
   function shouldHideDescriptionMsgOff() {
     return newTask.description.length < 5;
@@ -89,29 +95,32 @@ function AddTaskRow({ addTask }) {
         />
         <div className={"wrapper"}>
           <p>Priority:</p>
-          <Select options={['Low', 'Medium', 'High']}/>
-          <select
-            value={newTask.priority}
-            name={"priority"}
-            onChange={setTask}
-            className={"addTaskRow__input addTaskRow__input-select"}
-          >
-            <option value={"none"}>select...</option>
-            <option value={"Low"}>Low</option>
-            <option value={"Medium"}>Medium</option>
-            <option value={"High"}>High</option>
-          </select>
+          <Select options={["Low", "Medium", "High"]} selectValue={newTask.priority} changeHandler={setTaskPriority}/>
+          {/*<select*/}
+          {/*  value={newTask.priority}*/}
+          {/*  name={"priority"}*/}
+          {/*  onChange={setTask}*/}
+          {/*  className={"addTaskRow__input addTaskRow__input-select"}*/}
+          {/*>*/}
+          {/*  <option value={"none"}>select...</option>*/}
+          {/*  <option value={"Low"}>Low</option>*/}
+          {/*  <option value={"Medium"}>Medium</option>*/}
+          {/*  <option value={"High"}>High</option>*/}
+          {/*</select>*/}
           <button type={"submit"} className={"addTaskRow__btn"}>
             Add task
           </button>
         </div>
       </form>
-      <p className={shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"
+      <p
+        className={
+          shouldHideDescriptionMsgOff() ? "addTaskRow__error" : "d-none"
         }
       >
         {errors.descriptionErrorMsg}
       </p>
-      <p className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}
+      <p
+        className={shouldHidePriorityMsgOff() ? "addTaskRow__error" : "d-none"}
       >
         {errors.priorityErrorMsg}
       </p>
