@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Select from "./Select";
 
 function PaginationRow({
   tasksPerPage,
@@ -11,9 +12,9 @@ function PaginationRow({
   currentPage,
   setPage,
 }) {
-  const handleNumberOfRowsChange = (e) => {
-    changeNumberOfRows(e.target.value);
-  };
+  // const handleNumberOfRowsChange = (e) => {
+  //   changeNumberOfRows(e.target.value);
+  // };
 
   //logic for printing correct pagination data depending on number of tasks
   function visibleRange() {
@@ -33,16 +34,7 @@ function PaginationRow({
   return (
     <div className={"paginationRow"}>
       <p className={"paginationRow__text"}>Rows per page:</p>
-      <select
-        name={"rows"}
-        value={tasksPerPage}
-        onChange={handleNumberOfRowsChange}
-        className={"paginationRow__select"}
-      >
-        <option value={5}>5</option>
-        <option value={10}>10</option>
-        <option value={15}>15</option>
-      </select>
+      <Select options={[5, 10, 15]} selectValue={tasksPerPage} changeHandler={changeNumberOfRows} className={'selectPagination'}/>
       <p className={"paginationRow__text"}>{visibleRange()}</p>
       <button
         className={"paginationRow__btn"}

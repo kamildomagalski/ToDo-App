@@ -101,6 +101,7 @@ function AddTaskRow({ addTask }) {
             options={["Low", "Medium", "High"]}
             selectValue={newTask.priority}
             changeHandler={setTaskPriority}
+            className={'selectAddTask'}
           />
           <button type={"submit"} className={"addTaskRow__btn"}>
             Add task

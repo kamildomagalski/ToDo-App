@@ -1,6 +1,7 @@
-$select-width: 80px;
-$select-height: 30px;
-$select-border: 1px solid $color-dark;
+$select-width: 50px;
+$select-height: 25px;
+$select-border: 1px solid grey;
+$select-options-border: none;
 $border-rad: 2px;
 
 $color-text: black;
@@ -8,11 +9,11 @@ $color-bg: whitesmoke;
 $color-hover: silver;
 $color-scrollbar: transparent;
 $color-thumb: transparent;
-$selected-option-padding: 5px 10px;
+$selected-option-padding: 3px 10px;
 $max-option-list-height: 200px;
 $arrow-size: 11px;
 
-.select {
+.selectPagination {
   margin: 0 5px;
 
   //predefined styles
@@ -21,7 +22,7 @@ $arrow-size: 11px;
   background-color: $color-bg;
   color: $color-text;
   position: relative;
-  border: $select-border;
+  border-bottom: $select-border;
   border-radius: $border-rad;
 
   .selected {
@@ -59,7 +60,7 @@ $arrow-size: 11px;
     max-height: 0;
     width: 100%;
     transition: all 0.3s;
-    border: $select-border;
+    border: $select-options-border;
     border-radius: $border-rad;
     overflow: hidden;
     position: absolute;

@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  * @param {array} options- available options to choose
  * @param {string} selectValue- curent value of the select box
  * @param {function} changeHandler- callback that returns some value to change parents state
+ * @param {string} className- pass a class name for different stylesheet
  * @returns {JSX.Element} fully functional Component
  */
-function Select({ options, selectValue, changeHandler }) {
+function Select({ options, selectValue, changeHandler, className }) {
+
   const [selectOptions] = useState(options);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
@@ -24,7 +26,7 @@ function Select({ options, selectValue, changeHandler }) {
   };
 
   return (
-    <div className={"select"}>
+    <div className={`${className}`}>
       <div className={"selected"} onClick={isSelectOpen? handleClose : handleOpen}>
         <p className={"selected__text"}>{selectValue}</p>
         <span className={"iconWrapper"}>
